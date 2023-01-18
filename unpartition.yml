@@ -1,0 +1,10 @@
+---
+- name: remove partition
+  hosts: localhost
+  tasks:
+
+    - name: remove number 1
+      parted:
+        device: /dev/xvdd
+        number: 1
+        state: absent

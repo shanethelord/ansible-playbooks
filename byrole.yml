@@ -1,0 +1,7 @@
+---
+- name: roles installed
+  hosts: all
+  roles:
+    - apache
+    - ntpd
+    - dns

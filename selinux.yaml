@@ -1,0 +1,8 @@
+---
+- name: selinux permissive
+  hosts: localhost
+  tasks:
+    - name: making selinux permissive
+      selinux:
+        policy: targeted
+        state: permissive

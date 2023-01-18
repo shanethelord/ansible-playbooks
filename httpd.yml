@@ -1,0 +1,17 @@
+---
+- name: installing httpd
+  hosts: localhost
+  vars:
+    pack: httpd
+
+  tasks:
+    - name: install httpd
+      yum:
+        name: "{{ pack}}"
+        state: present
+
+    - name: start service
+      service:
+        name: "{{ pack}}"
+        state: started
+        enabled: yes

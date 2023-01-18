@@ -1,0 +1,10 @@
+---
+- name: copy file from local host to remote client
+  hosts: all
+  tasks:
+
+    - name: copying file
+      copy:
+        src: /tmp/some.cfg
+        dest: /tmp
+        mode: 0644

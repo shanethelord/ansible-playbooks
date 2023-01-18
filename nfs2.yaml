@@ -1,0 +1,32 @@
+---
+- name: nfs master
+  hosts: localhost
+  tasks:
+
+    - name: install the latest version of ns
+      yum:
+        name: nfs-utils
+        state: latest
+
+    - name: start nfs service
+      service:
+        name: nfs
+        state: started
+
+    - name: install rpc-bind
+      yum:
+        name: rpcbind
+        state: latest
+
+    - name: creating nfs shared directory
+      ansible.builtin.shell:
+        cmd: mkdir /nfs-share
+
+    - name: copying nfs document root
+      copy:
+        src: /etc/exports
+        dest: /etc/exports
+
+    - name: exporting nfs shared directory
+      ansible.builtin.shell:
+        cmd: exportfs -avr

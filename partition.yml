@@ -1,0 +1,33 @@
+---
+- name: partition
+  hosts: localhost
+  tasks:
+     
+    - name: creating a new partition
+      parted:
+        name: file
+        label: gpt
+        device: /dev/xvdd
+        number: 1
+        state: present
+        part_start: 1MiB
+        part_end: 1GiB
+
+    - name: create xfs file system
+      filesystem:
+        dev: /dev/xvdd
+        fstype: xfs
+
+
+    - name: create mount directory
+      file: 
+        path: /data
+        state: directory
+
+    - name: mount the filesystem
+      mount: 
+        src: /dev/xvdd
+        path: /data
+        fstype: xfs
+        state: mounted
+

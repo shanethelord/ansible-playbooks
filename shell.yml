@@ -1,0 +1,8 @@
+---
+- name: playbook for shell script
+  hosts: all
+  tasks:
+
+    - name: run shell script
+      shell: /root/cfile.sh
+

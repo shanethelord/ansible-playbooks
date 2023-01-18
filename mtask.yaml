@@ -1,0 +1,23 @@
+---
+- name: running two tasks
+  hosts: localhost
+
+  tasks:
+    - name: test connectivity
+      ping:
+
+
+    - name: install httpd
+      yum:
+        name: httpd
+        state: latest
+
+    - name: start httpd
+      service:
+        name: httpd
+        state: started
+
+    - name: enable httpd
+      service:
+        name: httpd
+        enabled: yes

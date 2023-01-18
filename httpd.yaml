@@ -1,0 +1,21 @@
+---
+- name: installing and running apache
+  hosts: lab
+
+  tasks:
+    - name: install apache
+      yum:
+        name: httpd
+        state: present
+
+
+    - name: start httpd
+      service:
+        name: httpd
+        state: started
+
+
+    - name: enable httpd
+      service:
+        name: httpd
+        enabled: yes

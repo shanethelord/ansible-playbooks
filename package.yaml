@@ -1,0 +1,10 @@
+---
+- name: installing multiple packages
+  hosts: localhost
+  vars:
+         packages: [ftp,telnet,htop]
+  tasks:
+    - name: install packages
+      yum:
+        name: '{{packages}}'
+        state: present

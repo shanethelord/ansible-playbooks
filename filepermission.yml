@@ -1,0 +1,10 @@
+---
+- name: change file permission
+  hosts: all
+  tasks:
+    
+    - name: changing file permission
+      file:
+        path: /tmp/file1
+        mode: 777
+

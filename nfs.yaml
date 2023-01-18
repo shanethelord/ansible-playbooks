@@ -1,0 +1,38 @@
+---
+- name: installing nfs master
+  hosts: localhost
+
+  tasks:
+    - name: installing nfs
+      yum:
+        name: nfs-utils
+        state: present
+
+    - name: start nfs
+      service:
+        name: nfs
+        state: started
+
+
+    - name: enable nfs
+      service:
+        name: nfs
+        enabled: yes
+
+
+    - name: installing rpc-bind
+      yum:
+        name: rpcbind
+        state: present
+
+
+    - name: start rpcbind
+      service:
+        name: rpcbind
+        state: started
+
+
+    - name: enable rpcbind
+      service:
+        name: rpcbind
+        enabled: yes
